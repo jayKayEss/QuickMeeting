@@ -7,46 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0081D4461B541FE500226207 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081D4451B541FE500226207 /* CountdownTimer.swift */; };
+		0081D4571B54399F00226207 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081D4561B54399F00226207 /* MenuViewController.swift */; };
+		0081D4591B545E5A00226207 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0081D4581B545E5A00226207 /* bell.aiff */; };
 		00C9F0711B081B5500078780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C9F0701B081B5500078780 /* AppDelegate.swift */; };
-		00C9F0731B081B5500078780 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C9F0721B081B5500078780 /* ViewController.swift */; };
+		00C9F0731B081B5500078780 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C9F0721B081B5500078780 /* TimerViewController.swift */; };
 		00C9F0761B081B5500078780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C9F0741B081B5500078780 /* Main.storyboard */; };
 		00C9F0781B081B5500078780 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C9F0771B081B5500078780 /* Images.xcassets */; };
 		00C9F07B1B081B5500078780 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C9F0791B081B5500078780 /* LaunchScreen.xib */; };
-		00C9F0871B081B5500078780 /* QuickMeetingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C9F0861B081B5500078780 /* QuickMeetingTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		00C9F0811B081B5500078780 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 00C9F0631B081B5500078780 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00C9F06A1B081B5500078780;
-			remoteInfo = QuickMeeting;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		0081D4451B541FE500226207 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		0081D4561B54399F00226207 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0081D4581B545E5A00226207 /* bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = bell.aiff; sourceTree = "<group>"; };
 		00C9F06B1B081B5500078780 /* QuickMeeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickMeeting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C9F06F1B081B5500078780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00C9F0701B081B5500078780 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00C9F0721B081B5500078780 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		00C9F0721B081B5500078780 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		00C9F0751B081B5500078780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00C9F0771B081B5500078780 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00C9F07A1B081B5500078780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		00C9F0801B081B5500078780 /* QuickMeetingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickMeetingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		00C9F0851B081B5500078780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00C9F0861B081B5500078780 /* QuickMeetingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMeetingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		00C9F0681B081B5500078780 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00C9F07D1B081B5500078780 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				00C9F06D1B081B5500078780 /* QuickMeeting */,
-				00C9F0831B081B5500078780 /* QuickMeetingTests */,
 				00C9F06C1B081B5500078780 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				00C9F06B1B081B5500078780 /* QuickMeeting.app */,
-				00C9F0801B081B5500078780 /* QuickMeetingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,7 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				00C9F0701B081B5500078780 /* AppDelegate.swift */,
-				00C9F0721B081B5500078780 /* ViewController.swift */,
+				0081D4561B54399F00226207 /* MenuViewController.swift */,
+				00C9F0721B081B5500078780 /* TimerViewController.swift */,
+				0081D4451B541FE500226207 /* CountdownTimer.swift */,
 				00C9F0741B081B5500078780 /* Main.storyboard */,
 				00C9F0771B081B5500078780 /* Images.xcassets */,
 				00C9F0791B081B5500078780 /* LaunchScreen.xib */,
@@ -90,24 +75,8 @@
 		00C9F06E1B081B5500078780 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0081D4581B545E5A00226207 /* bell.aiff */,
 				00C9F06F1B081B5500078780 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		00C9F0831B081B5500078780 /* QuickMeetingTests */ = {
-			isa = PBXGroup;
-			children = (
-				00C9F0861B081B5500078780 /* QuickMeetingTests.swift */,
-				00C9F0841B081B5500078780 /* Supporting Files */,
-			);
-			path = QuickMeetingTests;
-			sourceTree = "<group>";
-		};
-		00C9F0841B081B5500078780 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				00C9F0851B081B5500078780 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -132,24 +101,6 @@
 			productReference = 00C9F06B1B081B5500078780 /* QuickMeeting.app */;
 			productType = "com.apple.product-type.application";
 		};
-		00C9F07F1B081B5500078780 /* QuickMeetingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 00C9F08D1B081B5500078780 /* Build configuration list for PBXNativeTarget "QuickMeetingTests" */;
-			buildPhases = (
-				00C9F07C1B081B5500078780 /* Sources */,
-				00C9F07D1B081B5500078780 /* Frameworks */,
-				00C9F07E1B081B5500078780 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				00C9F0821B081B5500078780 /* PBXTargetDependency */,
-			);
-			name = QuickMeetingTests;
-			productName = QuickMeetingTests;
-			productReference = 00C9F0801B081B5500078780 /* QuickMeetingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +112,12 @@
 				TargetAttributes = {
 					00C9F06A1B081B5500078780 = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					00C9F07F1B081B5500078780 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 00C9F06A1B081B5500078780;
+						DevelopmentTeam = TTNGSN829X;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -182,7 +135,6 @@
 			projectRoot = "";
 			targets = (
 				00C9F06A1B081B5500078780 /* QuickMeeting */,
-				00C9F07F1B081B5500078780 /* QuickMeetingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -192,16 +144,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0081D4591B545E5A00226207 /* bell.aiff in Resources */,
 				00C9F0761B081B5500078780 /* Main.storyboard in Resources */,
 				00C9F07B1B081B5500078780 /* LaunchScreen.xib in Resources */,
 				00C9F0781B081B5500078780 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00C9F07E1B081B5500078780 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,28 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00C9F0731B081B5500078780 /* ViewController.swift in Sources */,
+				00C9F0731B081B5500078780 /* TimerViewController.swift in Sources */,
+				0081D4461B541FE500226207 /* CountdownTimer.swift in Sources */,
 				00C9F0711B081B5500078780 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00C9F07C1B081B5500078780 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00C9F0871B081B5500078780 /* QuickMeetingTests.swift in Sources */,
+				0081D4571B54399F00226207 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		00C9F0821B081B5500078780 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 00C9F06A1B081B5500078780 /* QuickMeeting */;
-			targetProxy = 00C9F0811B081B5500078780 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		00C9F0741B081B5500078780 /* Main.storyboard */ = {
@@ -342,6 +274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QuickMeeting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,43 +285,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QuickMeeting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		00C9F08E1B081B5500078780 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = QuickMeetingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickMeeting.app/QuickMeeting";
-			};
-			name = Debug;
-		};
-		00C9F08F1B081B5500078780 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = QuickMeetingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickMeeting.app/QuickMeeting";
 			};
 			name = Release;
 		};
@@ -411,14 +311,7 @@
 				00C9F08C1B081B5500078780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		00C9F08D1B081B5500078780 /* Build configuration list for PBXNativeTarget "QuickMeetingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00C9F08E1B081B5500078780 /* Debug */,
-				00C9F08F1B081B5500078780 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

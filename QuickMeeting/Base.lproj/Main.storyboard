@@ -1,25 +1,137 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ny7-qg-YqQ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="AvS-B5-WZP">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Ny7-qg-YqQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HVe-y9-YJe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ps3-tv-N0t" kind="relationship" relationship="rootViewController" id="6sa-49-xSM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrX-0C-Z6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-101" y="381"/>
+        </scene>
+        <!--Meeting Length-->
+        <scene sceneID="zD6-RR-tyv">
+            <objects>
+                <viewController id="Ps3-tv-N0t" customClass="MenuViewController" customModule="QuickMeeting" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="m0Y-a9-h6a"/>
+                        <viewControllerLayoutGuide type="bottom" id="8WN-0a-ugJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="oWa-BO-T4u">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kuf-09-7BR">
+                                <rect key="frame" x="218" y="397" width="132" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="50 min.">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="t99-Oh-ptk" kind="show" id="TYr-Si-pQX"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knt-tk-e6Z">
+                                <rect key="frame" x="134" y="90" width="300" height="84"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="UaR-Lc-CIq"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d30-Zn-PgE">
+                                <rect key="frame" x="134" y="283" width="300" height="84"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="27s-t4-eXe"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCd-L2-pVD">
+                                <rect key="frame" x="134" y="480" width="300" height="84"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="gB3-Si-I4Y"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwT-fF-dWf">
+                                <rect key="frame" x="218" y="205" width="132" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="25 min.">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="t99-Oh-ptk" kind="show" id="u0Y-tV-cBm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QCd-L2-pVD" firstAttribute="height" secondItem="d30-Zn-PgE" secondAttribute="height" id="34A-ba-AVu"/>
+                            <constraint firstItem="Kuf-09-7BR" firstAttribute="top" secondItem="d30-Zn-PgE" secondAttribute="bottom" constant="30" id="3YG-iC-5bv"/>
+                            <constraint firstAttribute="centerX" secondItem="lwT-fF-dWf" secondAttribute="centerX" id="B30-s6-W0W"/>
+                            <constraint firstItem="8WN-0a-ugJ" firstAttribute="top" secondItem="QCd-L2-pVD" secondAttribute="bottom" constant="40" id="Boo-AS-UQR"/>
+                            <constraint firstAttribute="centerX" secondItem="knt-tk-e6Z" secondAttribute="centerX" id="GWe-gZ-QZe"/>
+                            <constraint firstItem="QCd-L2-pVD" firstAttribute="height" secondItem="knt-tk-e6Z" secondAttribute="height" id="IY7-Pg-KgC"/>
+                            <constraint firstAttribute="centerX" secondItem="d30-Zn-PgE" secondAttribute="centerX" id="Kxc-7e-JdT"/>
+                            <constraint firstItem="d30-Zn-PgE" firstAttribute="top" secondItem="lwT-fF-dWf" secondAttribute="bottom" constant="30" id="Tut-u0-rae"/>
+                            <constraint firstItem="lwT-fF-dWf" firstAttribute="top" secondItem="knt-tk-e6Z" secondAttribute="bottom" constant="30" id="YOa-cC-7Ry"/>
+                            <constraint firstItem="knt-tk-e6Z" firstAttribute="top" secondItem="m0Y-a9-h6a" secondAttribute="bottom" constant="40" id="es4-Q2-oHl"/>
+                            <constraint firstAttribute="centerX" secondItem="QCd-L2-pVD" secondAttribute="centerX" id="nvd-Oy-duk"/>
+                            <constraint firstItem="QCd-L2-pVD" firstAttribute="top" secondItem="Kuf-09-7BR" secondAttribute="bottom" constant="30" id="qvP-aa-CJ0"/>
+                            <constraint firstAttribute="centerX" secondItem="Kuf-09-7BR" secondAttribute="centerX" id="xry-le-fVo"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Meeting Length" id="X49-Vv-dtL"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bXS-Pb-tMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="578" y="381"/>
+        </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="23s-5R-GTF">
+            <objects>
+                <viewController id="t99-Oh-ptk" customClass="TimerViewController" customModule="QuickMeeting" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gqB-54-t6U"/>
+                        <viewControllerLayoutGuide type="bottom" id="61A-MB-Kqh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tIK-4T-6In">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfp-2C-7j4">
+                                <rect key="frame" x="162" y="179" width="276" height="242"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="104"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Rfp-2C-7j4" secondAttribute="centerX" id="Blj-6B-yrf"/>
+                            <constraint firstAttribute="centerY" secondItem="Rfp-2C-7j4" secondAttribute="centerY" id="cqh-kW-E8B"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayLabel" destination="Rfp-2C-7j4" id="1gc-pi-eou"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pq-bt-B37" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1279" y="381"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TYr-Si-pQX"/>
+    </inferredMetricsTieBreakers>
 </document>
