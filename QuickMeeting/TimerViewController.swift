@@ -41,6 +41,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         timer?.stop()
+        displayTimer?.invalidate()
     }
     
     func updateDisplay() {
