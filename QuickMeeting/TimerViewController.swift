@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class TimerViewController: UIViewController, CountdownTimerDelegate {
+class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSynthesizerDelegate {
 
     var timer: CountdownTimer?
     var duration: CFTimeInterval = 0
@@ -17,13 +17,13 @@ class TimerViewController: UIViewController, CountdownTimerDelegate {
     var displayTimer: NSTimer?
     var speechSynth: AVSpeechSynthesizer?
     var bellSound: SystemSoundID = 0
+    var isSpeaking: Bool = false
     
     @IBOutlet weak var displayLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         timer = CountdownTimer(duration: duration, interval: interval, delegate: self)
-        speechSynth = AVSpeechSynthesizer()
 
         updateDisplay()
         displayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self,
@@ -51,6 +51,13 @@ class TimerViewController: UIViewController, CountdownTimerDelegate {
     }
     
     func saySomething(text: String) {
+        if (isSpeaking) {
+            NSLog("Refusing to queue speech while speaking")
+            return
+        }
+        
+        isSpeaking = true
+        
         if (bellSound == 0) {
             if let audioUrl = NSBundle.mainBundle().URLForResource("bell", withExtension: "aiff") {
                 AudioServicesCreateSystemSoundID(audioUrl, &bellSound)
@@ -59,6 +66,8 @@ class TimerViewController: UIViewController, CountdownTimerDelegate {
 
         if (speechSynth == nil) {
             speechSynth = AVSpeechSynthesizer()
+            weak var weakSelf = self
+            speechSynth?.delegate = weakSelf
         }
         
         AudioServicesPlaySystemSound(bellSound);
@@ -82,6 +91,15 @@ class TimerViewController: UIViewController, CountdownTimerDelegate {
         let text = String(format: "There are %d minutes remaining", timeRemaining.mins)
         saySomething(text)
     }
+    
+    @IBAction func speakNow() {
+        onInterval(timer!.timeRemaining)
+    }
 
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+        NSLog("Finished speaking")
+        isSpeaking = false
+    }
+    
 }
 
