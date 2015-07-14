@@ -22,6 +22,9 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     @IBOutlet weak var displayLabel: UILabel?
     
     override func viewDidLoad() {
+        UIApplication.sharedApplication().idleTimerDisabled = false;
+        UIApplication.sharedApplication().idleTimerDisabled = true;
+        
         super.viewDidLoad()
         timer = CountdownTimer(duration: duration, interval: interval, delegate: self)
 
@@ -42,6 +45,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     override func viewWillDisappear(animated: Bool) {
         timer?.stop()
         displayTimer?.invalidate()
+        UIApplication.sharedApplication().idleTimerDisabled = false;
     }
     
     func updateDisplay() {
@@ -88,7 +92,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     }
     
     func onInterval(timeRemaining: CFTimeInterval) {
-        let text = String(format: "There are %d minutes remaining", timeRemaining.mins)
+        let text = String(format: "We have %d minutes left", timeRemaining.mins)
         saySomething(text)
     }
     
