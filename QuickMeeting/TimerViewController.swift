@@ -11,6 +11,9 @@ import AVFoundation
 
 class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSynthesizerDelegate {
 
+    let TimerRestorationID = "CountdownTimerRestorationID"
+    
+    var timer: CountdownTimer?
     var duration: CFTimeInterval = 0
     var interval: CFTimeInterval = 0
     var displayTimer: NSTimer?
@@ -25,7 +28,8 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         UIApplication.sharedApplication().idleTimerDisabled = true;
         
         super.viewDidLoad()
-        CountdownTimer.Timer.start(duration, interval: interval, delegate: self)
+        timer = CountdownTimer()
+        timer?.start(duration, interval: interval, delegate: self)
 
         updateDisplay()
         displayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self,
@@ -41,13 +45,13 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     }
     
     override func viewWillDisappear(animated: Bool) {
-        CountdownTimer.Timer.stop()
+        timer?.stop()
         displayTimer?.invalidate()
         UIApplication.sharedApplication().idleTimerDisabled = false;
     }
     
     func updateDisplay() {
-        let timeRemaining = CountdownTimer.Timer.timeRemaining
+        let timeRemaining = timer!.timeRemaining
         displayLabel?.text = String(format: "%02d:%02d", timeRemaining.mins, timeRemaining.secs)
     }
     
@@ -82,19 +86,18 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         saySomething(String(format: "Starting a %d minute meeting", timeRemaining.mins))
     }
     
-    func onStop() {
-        saySomething("The meeting is over")
+    func onStop(timeRemaining: CFTimeInterval) {
+        saySomething(timeRemaining.description)
         displayTimer?.invalidate()
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func onInterval(timeRemaining: CFTimeInterval) {
-        let text = String(format: "We have %d minutes left", timeRemaining.mins)
-        saySomething(text)
+        saySomething(timeRemaining.description)
     }
     
     @IBAction func speakNow() {
-        onInterval(CountdownTimer.Timer.timeRemaining)
+        onInterval(timer!.timeRemaining)
     }
 
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {

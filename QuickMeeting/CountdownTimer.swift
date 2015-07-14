@@ -11,37 +11,40 @@ import UIKit
 protocol CountdownTimerDelegate {
     
     func onStart(timeRemaining: CFTimeInterval)
-    func onStop()
+    func onStop(timeRemaining: CFTimeInterval)
     func onInterval(timeRemaining: CFTimeInterval)
 
 }
 
 extension CFTimeInterval {
 
-    var mins: UInt8 {
-        return UInt8(ceil(self) / 60)
+    var mins: Int {
+        return Int(ceil(self) / 60)
     }
     
-    var secs: UInt8 {
-        return UInt8(ceil(self) % 60)
+    var secs: Int {
+        return Int(ceil(self) % 60)
+    }
+    
+    var description: String {
+        if self > 0 {
+            return String(format: "We have %d minutes left", self.mins)
+        } else {
+            return "The meeting is over"
+        }
     }
     
 }
 
 class CountdownTimer: NSObject {
    
-    static let Timer = CountdownTimer()
-    
     var duration: CFTimeInterval = 0
     var interval: CFTimeInterval = 0
     var delegate: CountdownTimerDelegate?
-    
-    var mainTimer: NSTimer?
-    var intervalTimer: NSTimer?
+
+    var startTime: NSDate?
     var endTime: NSDate?
     
-    var isRunning: Bool = false
-
     var timeRemaining: CFTimeInterval {
         if let end = endTime {
             return ceil(end.timeIntervalSinceNow)
@@ -50,45 +53,69 @@ class CountdownTimer: NSObject {
         return 0
     }
     
+    var isValid: Bool {
+        if let end = endTime {
+            return NSDate().compare(end) == .OrderedAscending
+        }
+
+        return false
+    }
+    
+    override init() {
+        NSLog("INIT INIT INIT")
+        super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLocalNotification:", name: "localNotificationReceived", object: UIApplication.sharedApplication())
+    }
+    
     func start(duration:CFTimeInterval, interval:CFTimeInterval, delegate:CountdownTimerDelegate) {
+        assert(duration > 0, "Duration must be greater than 0")
+        assert(interval > 0, "Interval must be greater than 0")
+
         self.duration = duration
         self.interval = interval
         self.delegate = delegate
-        self.isRunning = false
-        endTime = NSDate(timeIntervalSinceNow: duration)
-        
-        assert(duration > 0, "Duration must be greater than 0")
-        assert(interval > 0, "Interval must be greater than 0")
-        
-        isRunning = true
-        
+        startTime = NSDate()
+        endTime = NSDate(timeInterval: duration, sinceDate: startTime!)
+        NSLog("End time %@", endTime!)
+
         NSLog("STRT Time remaining: %f", timeRemaining)
         delegate.onStart(timeRemaining)
         
-        mainTimer = NSTimer.scheduledTimerWithTimeInterval(CFTimeInterval(duration),
-            target: self, selector: "onStop:", userInfo: nil, repeats: false)
-        
-        intervalTimer = NSTimer.scheduledTimerWithTimeInterval(CFTimeInterval(interval),
-            target: self, selector: "onInterval:", userInfo: nil, repeats: true)
-    }
+        var notificationTime = startTime!.copy() as! NSDate
+        do {
+            notificationTime = NSDate(timeInterval: interval, sinceDate: notificationTime)
+            NSLog("Notification time %@", notificationTime)
+            let minsRemaining = endTime!.timeIntervalSinceDate(notificationTime)
 
-    func stop() {
-        mainTimer?.invalidate()
-        intervalTimer?.invalidate()
+            var notification = UILocalNotification()
+            notification.timeZone = NSTimeZone.defaultTimeZone()
+            notification.fireDate = notificationTime
+            notification.alertBody = minsRemaining.description
+            notification.soundName = "bell.aiff"
         
-        isRunning = false
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        } while (notificationTime.compare(endTime!) == .OrderedAscending)
+        
+    }
+    
+    func handleLocalNotification(notification: UILocalNotification) {
+        NSLog("NOTIF %@", notification)
+        if (isValid) {
+            if timeRemaining > 0 {
+                delegate?.onInterval(timeRemaining)
+            } else {
+                delegate?.onStop(timeRemaining)
+                stop()
+            }
+        }
+    }
+    
+    func stop() {
         NSLog("CNCL Timer remaining: %f", timeRemaining)
-    }
-    
-    func onStop(timer:NSTimer) {
-        intervalTimer?.invalidate()
-        NSLog("STOP Time remaining: %f", timeRemaining)
-        delegate?.onStop()
-    }
-    
-    func onInterval(timer:NSTimer) {
-        NSLog("INTV Time remaining: %f", timeRemaining)
-        delegate?.onInterval(timeRemaining)
+        endTime = nil
+        startTime = nil
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
     
 }

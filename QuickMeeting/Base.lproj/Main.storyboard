@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="AvS-B5-WZP">
             <objects>
-                <navigationController id="Ny7-qg-YqQ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavController" id="Ny7-qg-YqQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HVe-y9-YJe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -23,7 +23,7 @@
         <!--Meeting Length-->
         <scene sceneID="zD6-RR-tyv">
             <objects>
-                <viewController id="Ps3-tv-N0t" customClass="MenuViewController" customModule="QuickMeeting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenuController" id="Ps3-tv-N0t" customClass="MenuViewController" customModule="QuickMeeting" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m0Y-a9-h6a"/>
                         <viewControllerLayoutGuide type="bottom" id="8WN-0a-ugJ"/>
@@ -100,7 +100,7 @@
         <!--Timer View Controller-->
         <scene sceneID="23s-5R-GTF">
             <objects>
-                <viewController id="t99-Oh-ptk" customClass="TimerViewController" customModule="QuickMeeting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerRunningController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t99-Oh-ptk" customClass="TimerViewController" customModule="QuickMeeting" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gqB-54-t6U"/>
                         <viewControllerLayoutGuide type="bottom" id="61A-MB-Kqh"/>

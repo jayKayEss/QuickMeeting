@@ -35,8 +35,8 @@ class MenuViewController: UIViewController {
             case .Min25:
 //                dest.duration = 25 * 60
 //                dest.interval = 10 * 60
-                dest.duration = 30
-                dest.interval = 10
+                dest.duration = 2 * 60
+                dest.interval = 1 * 60
             case .Min50:
                 dest.duration = 50 * 60
                 dest.interval = 10 * 60
