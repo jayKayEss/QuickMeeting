@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        NSNotificationCenter.defaultCenter().postNotificationName("localNotificationReceived", object: notification.userInfo)
+        NSLog("Posted notification")
+        NSNotificationCenter.defaultCenter().postNotificationName("QMLocalNotificationReceived", object: notification.userInfo)
     }
     
 //    func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {

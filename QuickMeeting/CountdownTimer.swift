@@ -62,10 +62,15 @@ class CountdownTimer: NSObject {
     }
     
     override init() {
-        NSLog("INIT INIT INIT")
         super.init()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLocalNotification:", name: "localNotificationReceived", object: UIApplication.sharedApplication())
+
+        NSLog("### ADDING OBSERVER")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLocalNotification:", name: "QMLocalNotificationReceived", object:nil)
+    }
+    
+    deinit {
+        NSLog("### REMOVING OBSERVER")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func start(duration:CFTimeInterval, interval:CFTimeInterval, delegate:CountdownTimerDelegate) {
@@ -99,8 +104,8 @@ class CountdownTimer: NSObject {
         
     }
     
-    func handleLocalNotification(notification: UILocalNotification) {
-        NSLog("NOTIF %@", notification)
+    func handleLocalNotification(options: NSDictionary?) {
+        NSLog("NOTIFICATION RECEIVED")
         if (isValid) {
             if timeRemaining > 0 {
                 delegate?.onInterval(timeRemaining)
