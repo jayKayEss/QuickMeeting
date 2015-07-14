@@ -54,6 +54,10 @@ class CountdownTimer: NSObject {
     }
     
     var isValid: Bool {
+        return endTime != nil
+    }
+    
+    var isTimeRemaining: Bool {
         if let end = endTime {
             return NSDate().compare(end) == .OrderedAscending
         }
@@ -105,9 +109,9 @@ class CountdownTimer: NSObject {
     }
     
     func handleLocalNotification(options: NSDictionary?) {
-        NSLog("NOTIFICATION RECEIVED")
+        NSLog("NOTIFICATION RECEIVED %d", timeRemaining)
         if (isValid) {
-            if timeRemaining > 0 {
+            if isTimeRemaining {
                 delegate?.onInterval(timeRemaining)
             } else {
                 delegate?.onStop(timeRemaining)
