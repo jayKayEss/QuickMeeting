@@ -11,7 +11,6 @@ import AVFoundation
 
 class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSynthesizerDelegate {
 
-    var timer: CountdownTimer?
     var duration: CFTimeInterval = 0
     var interval: CFTimeInterval = 0
     var displayTimer: NSTimer?
@@ -26,13 +25,11 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         UIApplication.sharedApplication().idleTimerDisabled = true;
         
         super.viewDidLoad()
-        timer = CountdownTimer(duration: duration, interval: interval, delegate: self)
+        CountdownTimer.Timer.start(duration, interval: interval, delegate: self)
 
         updateDisplay()
         displayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self,
             selector: "updateDisplay", userInfo: nil, repeats: true)
-        
-        timer?.start()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,15 +41,14 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     }
     
     override func viewWillDisappear(animated: Bool) {
-        timer?.stop()
+        CountdownTimer.Timer.stop()
         displayTimer?.invalidate()
         UIApplication.sharedApplication().idleTimerDisabled = false;
     }
     
     func updateDisplay() {
-        if let timeRemaining = timer?.timeRemaining {
-            displayLabel?.text = String(format: "%02d:%02d", timeRemaining.mins, timeRemaining.secs)
-        }
+        let timeRemaining = CountdownTimer.Timer.timeRemaining
+        displayLabel?.text = String(format: "%02d:%02d", timeRemaining.mins, timeRemaining.secs)
     }
     
     func saySomething(text: String) {
@@ -98,7 +94,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     }
     
     @IBAction func speakNow() {
-        onInterval(timer!.timeRemaining)
+        onInterval(CountdownTimer.Timer.timeRemaining)
     }
 
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {

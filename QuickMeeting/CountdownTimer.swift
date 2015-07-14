@@ -30,15 +30,17 @@ extension CFTimeInterval {
 
 class CountdownTimer: NSObject {
    
-    let duration: CFTimeInterval
-    let interval: CFTimeInterval
-    let delegate: CountdownTimerDelegate
+    static let Timer = CountdownTimer()
+    
+    var duration: CFTimeInterval = 0
+    var interval: CFTimeInterval = 0
+    var delegate: CountdownTimerDelegate?
     
     var mainTimer: NSTimer?
     var intervalTimer: NSTimer?
     var endTime: NSDate?
     
-    var isRunning: Bool
+    var isRunning: Bool = false
 
     var timeRemaining: CFTimeInterval {
         if let end = endTime {
@@ -48,15 +50,13 @@ class CountdownTimer: NSObject {
         return 0
     }
     
-    init(duration:CFTimeInterval, interval:CFTimeInterval, delegate:CountdownTimerDelegate) {
+    func start(duration:CFTimeInterval, interval:CFTimeInterval, delegate:CountdownTimerDelegate) {
         self.duration = duration
         self.interval = interval
         self.delegate = delegate
         self.isRunning = false
         endTime = NSDate(timeIntervalSinceNow: duration)
-    }
-
-    func start() {
+        
         assert(duration > 0, "Duration must be greater than 0")
         assert(interval > 0, "Interval must be greater than 0")
         
@@ -83,12 +83,12 @@ class CountdownTimer: NSObject {
     func onStop(timer:NSTimer) {
         intervalTimer?.invalidate()
         NSLog("STOP Time remaining: %f", timeRemaining)
-        delegate.onStop()
+        delegate?.onStop()
     }
     
     func onInterval(timer:NSTimer) {
         NSLog("INTV Time remaining: %f", timeRemaining)
-        delegate.onInterval(timeRemaining)
+        delegate?.onInterval(timeRemaining)
     }
     
 }
