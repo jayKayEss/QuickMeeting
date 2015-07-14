@@ -39,6 +39,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         AudioServicesDisposeSystemSoundID(bellSound)
+        bellSound = 0
         speechSynth = nil
     }
     
