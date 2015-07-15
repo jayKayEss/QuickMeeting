@@ -76,6 +76,39 @@ class CountdownTimer: NSObject {
         NSLog("### REMOVING OBSERVER")
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+
+    convenience init(coder aDecoder: NSCoder) {
+        self.init()
+        
+        if let duration = aDecoder.decodeObjectForKey("duration") as? CFTimeInterval {
+            self.duration = duration
+        }
+
+        if let interval = aDecoder.decodeObjectForKey("interval") as? CFTimeInterval {
+            self.interval = interval
+        }
+        
+        if let startTime = aDecoder.decodeObjectForKey("startTime") as? NSDate {
+            self.startTime = startTime
+        }
+
+        if let endTime = aDecoder.decodeObjectForKey("endTime") as? NSDate {
+            self.endTime = endTime
+        }
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(duration, forKey: "duration")
+        aCoder.encodeObject(interval, forKey: "interval")
+
+        if let startTime = self.startTime {
+            aCoder.encodeObject(startTime, forKey: "startTime")
+        }
+
+        if let endTime = self.endTime {
+            aCoder.encodeObject(endTime, forKey: "endTime")
+        }
+    }
     
     func start(duration:CFTimeInterval, interval:CFTimeInterval, delegate:CountdownTimerDelegate) {
         assert(duration > 0, "Duration must be greater than 0")

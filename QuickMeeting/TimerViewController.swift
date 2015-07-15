@@ -23,13 +23,23 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     
     @IBOutlet weak var displayLabel: UILabel?
     
-    override func viewDidLoad() {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NSLog("View Will Appear!")
         UIApplication.sharedApplication().idleTimerDisabled = false;
         UIApplication.sharedApplication().idleTimerDisabled = true;
         
-        super.viewDidLoad()
-        timer = CountdownTimer()
-        timer?.start(duration, interval: interval, delegate: self)
+        if (timer == nil) {
+            timer = CountdownTimer()
+            timer?.start(duration, interval: interval, delegate: self)
+        } else {
+            if !timer!.isTimeRemaining {
+                timer!.stop()
+                goBackToRootViewController()
+                return
+            }
+        }
 
         updateDisplay()
         displayTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self,
@@ -46,6 +56,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     
     override func viewWillDisappear(animated: Bool) {
         timer?.stop()
+        timer = nil
         displayTimer?.invalidate()
         UIApplication.sharedApplication().idleTimerDisabled = false;
     }
@@ -88,12 +99,16 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     
     func onStop(timeRemaining: CFTimeInterval) {
         saySomething(timeRemaining.description)
-        displayTimer?.invalidate()
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        goBackToRootViewController()
     }
     
     func onInterval(timeRemaining: CFTimeInterval) {
         saySomething(timeRemaining.description)
+    }
+    
+    func goBackToRootViewController() {
+        displayTimer?.invalidate()
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     @IBAction func speakNow() {
@@ -105,5 +120,18 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         isSpeaking = false
     }
     
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+        NSLog("### Encoding state...")
+        coder.encodeObject(timer, forKey: TimerRestorationID)
+        super.encodeRestorableStateWithCoder(coder)
+    }
+    
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+        NSLog("### Decoding state...")
+        timer = coder.decodeObjectForKey(TimerRestorationID) as? CountdownTimer
+        NSLog("Timer: %@", timer!)
+        timer?.delegate = self
+        super.decodeRestorableStateWithCoder(coder)
+    }
 }
 
