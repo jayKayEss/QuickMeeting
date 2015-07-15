@@ -106,7 +106,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         saySomething(timeRemaining.description)
     }
     
-    func goBackToRootViewController() {
+    @IBAction func goBackToRootViewController() {
         displayTimer?.invalidate()
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
