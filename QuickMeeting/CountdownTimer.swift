@@ -30,7 +30,7 @@ extension CFTimeInterval {
         if self > 0 {
             return String(format: "We have %d minutes left", self.mins)
         } else {
-            return "The meeting is over"
+            return "And we're done"
         }
     }
     

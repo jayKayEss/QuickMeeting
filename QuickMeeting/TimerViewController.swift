@@ -94,7 +94,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     }
     
     func onStart(timeRemaining: CFTimeInterval) {
-        saySomething(String(format: "Starting a %d minute meeting", timeRemaining.mins))
+        saySomething(String(format: "Let's meet for %d minutes", timeRemaining.mins))
     }
     
     func onStop(timeRemaining: CFTimeInterval) {
