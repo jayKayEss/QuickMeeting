@@ -62,7 +62,7 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
     }
     
     func updateDisplay() {
-        let timeRemaining = timer!.timeRemaining
+        let timeRemaining = timer!.timeRemaining >= 0 ? timer!.timeRemaining : 0
         displayLabel?.text = String(format: "%02d:%02d", timeRemaining.mins, timeRemaining.secs)
     }
     
