@@ -106,6 +106,21 @@ class TimerViewController: UIViewController, CountdownTimerDelegate, AVSpeechSyn
         saySomething(timeRemaining.description)
     }
     
+    @IBAction func cancelMeeting() {
+        let alert = UIAlertController(title: "Cancel Meeting",
+            message: "Are you sure you want to cancel the meeting?", preferredStyle: .Alert)
+        
+        let actionNo = UIAlertAction(title: "No", style: .Default, handler: nil)
+        alert.addAction(actionNo)
+        
+        let actionYes = UIAlertAction(title: "Yes", style: .Default) { [unowned self] action -> Void in
+            self.goBackToRootViewController()
+        }
+        alert.addAction(actionYes)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func goBackToRootViewController() {
         displayTimer?.invalidate()
         self.navigationController?.popToRootViewControllerAnimated(true)
